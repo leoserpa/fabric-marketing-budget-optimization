@@ -16,7 +16,14 @@
         },
         "name": "Run_Bronze_to_Silver",
         "description": "Executa a transformação dos dados da camada Bronze para a camada Silver.",
-        "dependsOn": []
+        "dependsOn": [
+          {
+            "activity": "Run_Data_Profiling",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
       },
       {
         "type": "TridentNotebook",
@@ -41,6 +48,23 @@
             ]
           }
         ]
+      },
+      {
+        "type": "TridentNotebook",
+        "typeProperties": {
+          "notebookId": "a748b2a1-773d-b73d-4f38-34b7940f7e6d",
+          "workspaceId": "00000000-0000-0000-0000-000000000000"
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "Run_Data_Profiling",
+        "description": "Executa o profiling e as validações de qualidade dos dados da camada Bronze.",
+        "dependsOn": []
       }
     ]
   }
