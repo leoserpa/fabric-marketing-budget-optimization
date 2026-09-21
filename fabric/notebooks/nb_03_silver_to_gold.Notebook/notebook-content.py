@@ -34,16 +34,20 @@
 # 
 # ### Objetivo
 # 
-# Transformar os dados confiáveis da camada Silver em estruturas analíticas orientadas ao negócio, permitindo avaliar a eficiência dos investimentos em marketing e identificar oportunidades de otimização do orçamento.
+# Transformar os dados confiáveis da camada Silver em estruturas analíticas da camada Gold, preparadas para consumo pelo modelo semântico e pelo Power BI.
+# 
+# A modelagem preserva uma visão detalhada no nível de campanha para análises multidimensionais e também disponibiliza tabelas agregadas para análises específicas de desempenho e eficiência dos investimentos em marketing.
 # 
 # **Principais etapas:**
 # 
 # - Leitura da tabela Silver
+# - Construção da tabela analítica no nível de campanha
 # - Definição dos principais KPIs de marketing
-# - Análise de eficiência por plataforma
-# - Análise por características das campanhas
-# - Construção das tabelas analíticas da camada Gold
-# - Validação dos resultados
+# - Construção de agregações por dimensões de negócio
+# - Persistência das tabelas Gold em formato Delta
+# - Validação das estruturas analíticas
+# - Preparação dos dados para o modelo semântico e Power BI
+
 
 # MARKDOWN ********************
 
@@ -111,7 +115,118 @@ display(df_silver.limit(10))
 
 # MARKDOWN ********************
 
-# ## 2.1 Desempenho por Plataforma
+# ## 2.1 Desempenho por Campanha
+# 
+# Esta tabela preserva a granularidade no nível de campanha e reúne as principais dimensões e métricas necessárias para análises multidimensionais no modelo semântico e no Power BI.
+# 
+# Diferentemente das tabelas agregadas, essa estrutura permite combinar filtros de plataforma, dispositivo, formato criativo, audiência, objetivo e demais características das campanhas.
+
+# CELL ********************
+
+# Construção da tabela Gold no nível de campanha
+
+gold_campaign_performance = (
+    df_silver
+    .select(
+        # Identificação
+        "campaign_id",
+        "start_date",
+        "quarter",
+        "day_of_week",
+        "hour_of_day",
+        "campaign_day",
+
+        # Estratégia da campanha
+        "campaign_objective",
+        "platform",
+        "ad_placement",
+        "device_type",
+        "operating_system",
+        "industry_vertical",
+        "budget_tier",
+
+        # Criativo
+        "creative_format",
+        "creative_size",
+        "ad_copy_length",
+        "has_call_to_action",
+        "creative_emotion",
+        "creative_age_days",
+
+        # Público
+        "target_audience_age",
+        "target_audience_gender",
+        "audience_interest_category",
+        "income_bracket",
+        "purchase_intent_score",
+        "retargeting_flag",
+
+        # Qualidade e comportamento
+        "quality_score",
+        "bounce_rate",
+        "avg_session_duration_seconds",
+        "pages_per_session",
+
+        # Métricas base
+        "impressions",
+        "clicks",
+        "conversions",
+        "ad_spend",
+        "revenue",
+
+        # KPIs
+        "CTR",
+        "CPC",
+        "conversion_rate",
+        "CPA",
+        "ROAS",
+        "profit"
+    )
+)
+
+display(gold_campaign_performance.limit(20))
+
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
+# CELL ********************
+
+# Validação da tabela Gold no nível de campanha
+
+total_registros = gold_campaign_performance.count()
+total_colunas = len(gold_campaign_performance.columns)
+total_campaign_ids = (
+    gold_campaign_performance
+    .select("campaign_id")
+    .distinct()
+    .count()
+)
+
+print(f"Registros: {total_registros:,}")
+print(f"Colunas: {total_colunas}")
+print(f"Campaign IDs únicos: {total_campaign_ids:,}")
+
+if total_registros != total_campaign_ids:
+    raise ValueError(
+        "Foram identificados campaign_id duplicados na tabela Gold."
+    )
+
+print("Validação concluída com sucesso.")
+
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
+# MARKDOWN ********************
+
+# ## 2.2 Desempenho por Plataforma
 
 # CELL ********************
 
@@ -194,7 +309,7 @@ display(
 
 # MARKDOWN ********************
 
-# ## 2.2 Desempenho por Objetivo da Campanha
+# ## 2.3 Desempenho por Objetivo da Campanha
 
 # CELL ********************
 
@@ -277,7 +392,7 @@ display(
 
 # MARKDOWN ********************
 
-# ## 2.3 Função para Construção das Agregações Gold
+# ## 2.4 Função para Construção das Agregações Gold
 
 # CELL ********************
 
@@ -372,7 +487,7 @@ display(
 
 # MARKDOWN ********************
 
-# ## 2.4 Desempenho por Características da Campanha
+# ## 2.5 Desempenho por Características da Campanha
 
 # CELL ********************
 
@@ -429,9 +544,10 @@ print(f"Categorias de audiência: {gold_audience_performance.count()}")
 
 # CELL ********************
 
-# Tabelas analíticas da camada Gold
+# Tabelas Gold que serão persistidas no Lakehouse
 
 tabelas_gold = {
+    "gold_campaign_performance": gold_campaign_performance,
     "gold_platform_performance": gold_platform_performance,
     "gold_objective_performance": gold_objective_performance,
     "gold_device_performance": gold_device_performance,
@@ -439,8 +555,6 @@ tabelas_gold = {
     "gold_placement_performance": gold_placement_performance,
     "gold_audience_performance": gold_audience_performance
 }
-
-# Gravação das tabelas Gold em formato Delta
 
 for nome_tabela, dataframe in tabelas_gold.items():
     (
@@ -468,7 +582,8 @@ for nome_tabela, dataframe in tabelas_gold.items():
 
 # Validação das tabelas persistidas na camada Gold
 
-tabelas_gold_validacao = {
+validacoes_gold = {
+    "gold_campaign_performance": 10000,
     "gold_platform_performance": 6,
     "gold_objective_performance": 5,
     "gold_device_performance": 3,
@@ -477,22 +592,15 @@ tabelas_gold_validacao = {
     "gold_audience_performance": 6
 }
 
-for nome_tabela, quantidade_esperada in tabelas_gold_validacao.items():
-
-    df_validacao = spark.table(nome_tabela)
-    quantidade_registros = df_validacao.count()
-
-    status = (
-        "OK"
-        if quantidade_registros == quantidade_esperada
-        else "VERIFICAR"
-    )
-
+for tabela, esperado in validacoes_gold.items():
+    
+    total = spark.table(tabela).count()
+    
+    status = "OK" if total == esperado else "VERIFICAR"
+    
     print(
-        f"{nome_tabela}: "
-        f"{quantidade_registros} registros | "
-        f"Esperado: {quantidade_esperada} | "
-        f"Status: {status}"
+        f"{tabela}: {total:,} registros | "
+        f"Esperado: {esperado:,} | {status}"
     )
 
 # METADATA ********************
@@ -508,20 +616,20 @@ for nome_tabela, quantidade_esperada in tabelas_gold_validacao.items():
 # 
 # A transformação da camada Silver para a camada Gold foi concluída com sucesso.
 # 
-# A partir dos dados consolidados da tabela `silver_marketing_campaigns`, foram construídas estruturas analíticas orientadas à avaliação do desempenho e da eficiência dos investimentos em marketing.
+# A camada Gold foi estruturada para atender tanto análises multidimensionais no nível de campanha quanto consultas agregadas orientadas a diferentes dimensões de negócio.
 # 
-# As métricas CTR, CPC, taxa de conversão, CPA, ROAS e lucro foram recalculadas a partir dos valores agregados, evitando o uso de médias simples de indicadores derivados.
+# ### Principais resultados
 # 
-# Foram criadas e persistidas em formato Delta as seguintes tabelas analíticas:
+# - Criação da tabela `gold_campaign_performance`, preservando a granularidade de uma linha por campanha
+# - Validação de 10.000 campanhas e 10.000 `campaign_id` únicos
+# - Construção de tabelas agregadas por plataforma, objetivo, dispositivo, formato criativo, posicionamento e audiência
+# - Recálculo dos principais KPIs a partir dos valores consolidados nas tabelas agregadas
+# - Persistência de 7 tabelas Gold em formato Delta
+# - Validação da quantidade de registros de todas as estruturas analíticas
 # 
-# - `gold_platform_performance`
-# - `gold_objective_performance`
-# - `gold_device_performance`
-# - `gold_creative_performance`
-# - `gold_placement_performance`
-# - `gold_audience_performance`
+# A tabela `gold_campaign_performance` será utilizada como principal fonte para o modelo semântico, permitindo análises combinadas entre diferentes características das campanhas e filtros multidimensionais no Power BI.
 # 
-# A validação final confirmou a cardinalidade esperada de todas as tabelas Gold, indicando que as agregações foram persistidas corretamente no Lakehouse.
+# As tabelas agregadas complementam a camada Gold com visões específicas de desempenho e eficiência dos investimentos em marketing.
 # 
-# Com a camada Gold concluída, os dados estão preparados para consumo analítico e construção dos indicadores e visualizações no Power BI.
+# Com isso, a camada Gold está preparada para consumo analítico e construção do modelo semântico no Power BI.
 
