@@ -1,6 +1,7 @@
 table dim_date
 	lineageTag: f7197e28-6662-465f-94a1-552a39a4ec36
 	sourceLineageTag: [dbo].[dim_date]
+	dataCategory: Time
 
 	column date_key
 		dataType: int64
@@ -17,6 +18,7 @@ table dim_date
 
 	column start_date
 		dataType: dateTime
+		isKey
 		formatString: General Date
 		lineageTag: ec76da89-3ecd-46fa-af6c-af51d64895a1
 		sourceLineageTag: start_date
@@ -61,6 +63,9 @@ table dim_date
 		sourceLineageTag: month_name
 		summarizeBy: none
 		sourceColumn: month_name
+		sortByColumn: month
+
+		changedProperty = SortByColumn
 
 		annotation SummarizationSetBy = Automatic
 
