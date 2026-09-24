@@ -12,6 +12,14 @@ annotation PBI_QueryOrder = ["DirectLake - lh_marketing_analytics"]
 
 annotation PBI_ProTooling = ["DirectLakeOnOneLakeInWeb","WebModelingEdit"]
 
-ref table gold_campaign_performance
 ref table _Medidas
+ref table dim_audience
+ref table dim_device
+ref table dim_objective
+ref table dim_platform
+ref table dim_creative
+ref table dim_industry
+ref table dim_date
+ref table dim_placement
+ref table fact_campaign_performance
 

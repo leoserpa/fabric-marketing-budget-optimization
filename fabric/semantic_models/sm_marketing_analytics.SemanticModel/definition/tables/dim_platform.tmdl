@@ -1,0 +1,33 @@
+table dim_platform
+	lineageTag: f8dcc653-adcc-49a7-832d-1a005a8ced76
+	sourceLineageTag: [dbo].[dim_platform]
+
+	column platform_key
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: de782728-bcd0-4b7c-b83d-a04d140327c3
+		sourceLineageTag: platform_key
+		summarizeBy: none
+		sourceColumn: platform_key
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column platform
+		dataType: string
+		lineageTag: dc4070bb-56c7-443f-8b12-90f4e65bf2fa
+		sourceLineageTag: platform
+		summarizeBy: none
+		sourceColumn: platform
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim_platform = entity
+		mode: directLake
+		source
+			entityName: dim_platform
+			schemaName: dbo
+			expressionSource: 'DirectLake - lh_marketing_analytics'
+

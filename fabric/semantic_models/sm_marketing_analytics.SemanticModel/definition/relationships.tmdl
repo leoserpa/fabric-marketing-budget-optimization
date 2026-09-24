@@ -1,0 +1,32 @@
+relationship 73a01541-27d9-83d0-f6aa-79469610776d
+	fromColumn: fact_campaign_performance.date_key
+	toColumn: dim_date.date_key
+
+relationship 41fe79bd-f281-5705-729b-a0307dcdfebf
+	fromColumn: fact_campaign_performance.platform_key
+	toColumn: dim_platform.platform_key
+
+relationship bc7fdc26-7019-4f66-c6fc-2ed947858e50
+	fromColumn: fact_campaign_performance.device_key
+	toColumn: dim_device.device_key
+
+relationship 861d1995-c77c-a074-87f9-4b994e01bab6
+	fromColumn: fact_campaign_performance.objective_key
+	toColumn: dim_objective.objective_key
+
+relationship ff250822-3c2d-f560-1979-46099cf9a73c
+	fromColumn: fact_campaign_performance.creative_key
+	toColumn: dim_creative.creative_key
+
+relationship 253b3125-b732-7d1c-4adc-d37b4060b3bd
+	fromColumn: fact_campaign_performance.audience_key
+	toColumn: dim_audience.audience_key
+
+relationship e4baeb36-526f-181f-ec17-cbbe20407a04
+	fromColumn: fact_campaign_performance.placement_key
+	toColumn: dim_placement.placement_key
+
+relationship e2fe13ad-8ccc-4955-55e9-78b2b6d322d7
+	fromColumn: fact_campaign_performance.industry_key
+	toColumn: dim_industry.industry_key
+

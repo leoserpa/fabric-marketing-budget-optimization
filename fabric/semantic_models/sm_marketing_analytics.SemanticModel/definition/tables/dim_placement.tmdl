@@ -1,0 +1,33 @@
+table dim_placement
+	lineageTag: 0b877683-94c3-4abe-b4fe-25e07b7ac327
+	sourceLineageTag: [dbo].[dim_placement]
+
+	column placement_key
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: a5b6e2ec-76e6-4dfa-a5c1-7e59c2a8c28b
+		sourceLineageTag: placement_key
+		summarizeBy: none
+		sourceColumn: placement_key
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column ad_placement
+		dataType: string
+		lineageTag: 16a7985f-e7e0-4939-a7e0-3c45bf2bb822
+		sourceLineageTag: ad_placement
+		summarizeBy: none
+		sourceColumn: ad_placement
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim_placement = entity
+		mode: directLake
+		source
+			entityName: dim_placement
+			schemaName: dbo
+			expressionSource: 'DirectLake - lh_marketing_analytics'
+

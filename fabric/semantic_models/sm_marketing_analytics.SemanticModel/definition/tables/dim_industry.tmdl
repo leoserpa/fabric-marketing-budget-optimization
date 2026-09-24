@@ -1,0 +1,33 @@
+table dim_industry
+	lineageTag: 2a6af5f4-707d-46a1-88dc-a9134fed6a2e
+	sourceLineageTag: [dbo].[dim_industry]
+
+	column industry_key
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 8b7cf3bc-b0fa-40f9-942e-749f0571ed9a
+		sourceLineageTag: industry_key
+		summarizeBy: none
+		sourceColumn: industry_key
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column industry_vertical
+		dataType: string
+		lineageTag: 083122d6-78e1-46b3-b1ae-bdfab33a6b35
+		sourceLineageTag: industry_vertical
+		summarizeBy: none
+		sourceColumn: industry_vertical
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim_industry = entity
+		mode: directLake
+		source
+			entityName: dim_industry
+			schemaName: dbo
+			expressionSource: 'DirectLake - lh_marketing_analytics'
+

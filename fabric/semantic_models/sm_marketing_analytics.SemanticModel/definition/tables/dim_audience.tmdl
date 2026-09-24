@@ -1,0 +1,79 @@
+table dim_audience
+	lineageTag: 05705de5-72a0-4a0f-8c13-a650370e29ce
+	sourceLineageTag: [dbo].[dim_audience]
+
+	column audience_key
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 9118b6a4-6077-483b-9b9f-a22cc7a58003
+		sourceLineageTag: audience_key
+		summarizeBy: none
+		sourceColumn: audience_key
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column target_audience_age
+		dataType: string
+		lineageTag: cfffc712-1b93-47c5-8237-ac29238162b3
+		sourceLineageTag: target_audience_age
+		summarizeBy: none
+		sourceColumn: target_audience_age
+
+		annotation SummarizationSetBy = Automatic
+
+	column target_audience_gender
+		dataType: string
+		lineageTag: b1f434b7-2fe3-4115-b775-be01ccdcd839
+		sourceLineageTag: target_audience_gender
+		summarizeBy: none
+		sourceColumn: target_audience_gender
+
+		annotation SummarizationSetBy = Automatic
+
+	column audience_interest_category
+		dataType: string
+		lineageTag: 649fedc3-94c9-4e29-9d53-092d7b074ca2
+		sourceLineageTag: audience_interest_category
+		summarizeBy: none
+		sourceColumn: audience_interest_category
+
+		annotation SummarizationSetBy = Automatic
+
+	column income_bracket
+		dataType: string
+		lineageTag: f8bd1fc8-d8fe-40c5-85a3-8785f5018b9c
+		sourceLineageTag: income_bracket
+		summarizeBy: none
+		sourceColumn: income_bracket
+
+		annotation SummarizationSetBy = Automatic
+
+	column purchase_intent_score
+		dataType: string
+		lineageTag: ff3b84f4-caf7-41ad-9cb4-39ff204cac7b
+		sourceLineageTag: purchase_intent_score
+		summarizeBy: none
+		sourceColumn: purchase_intent_score
+
+		annotation SummarizationSetBy = Automatic
+
+	column retargeting_flag
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 1d19d074-aac3-4288-9943-38b621fe55c9
+		sourceLineageTag: retargeting_flag
+		summarizeBy: none
+		sourceColumn: retargeting_flag
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim_audience = entity
+		mode: directLake
+		source
+			entityName: dim_audience
+			schemaName: dbo
+			expressionSource: 'DirectLake - lh_marketing_analytics'
+

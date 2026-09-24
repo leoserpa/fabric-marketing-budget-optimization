@@ -1,0 +1,42 @@
+table dim_device
+	lineageTag: 3ec5ac59-4c0e-4889-8923-6bbc85535b2c
+	sourceLineageTag: [dbo].[dim_device]
+
+	column device_key
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 409e2cf8-63dc-4d25-9b20-65a763d94ccb
+		sourceLineageTag: device_key
+		summarizeBy: none
+		sourceColumn: device_key
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column device_type
+		dataType: string
+		lineageTag: 92cb215d-819b-4e66-8449-51ca4e5dcab7
+		sourceLineageTag: device_type
+		summarizeBy: none
+		sourceColumn: device_type
+
+		annotation SummarizationSetBy = Automatic
+
+	column operating_system
+		dataType: string
+		lineageTag: dedd1196-3ef0-473f-b2ad-06fb2413fc36
+		sourceLineageTag: operating_system
+		summarizeBy: none
+		sourceColumn: operating_system
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim_device = entity
+		mode: directLake
+		source
+			entityName: dim_device
+			schemaName: dbo
+			expressionSource: 'DirectLake - lh_marketing_analytics'
+

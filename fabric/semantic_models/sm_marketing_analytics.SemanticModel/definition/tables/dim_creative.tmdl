@@ -1,0 +1,70 @@
+table dim_creative
+	lineageTag: 5bfca935-226a-4414-b909-aef5b303ad13
+	sourceLineageTag: [dbo].[dim_creative]
+
+	column creative_key
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 64e4d2bd-f635-4253-9efe-68501c471fe0
+		sourceLineageTag: creative_key
+		summarizeBy: none
+		sourceColumn: creative_key
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column creative_format
+		dataType: string
+		lineageTag: 969f4193-f040-4ad8-976e-67de2ae2b6cb
+		sourceLineageTag: creative_format
+		summarizeBy: none
+		sourceColumn: creative_format
+
+		annotation SummarizationSetBy = Automatic
+
+	column creative_size
+		dataType: string
+		lineageTag: 6e9213f4-891d-4dfc-8767-3b4f482e343d
+		sourceLineageTag: creative_size
+		summarizeBy: none
+		sourceColumn: creative_size
+
+		annotation SummarizationSetBy = Automatic
+
+	column ad_copy_length
+		dataType: string
+		lineageTag: ac987c8c-bcc8-4d63-b144-5e6b295061ac
+		sourceLineageTag: ad_copy_length
+		summarizeBy: none
+		sourceColumn: ad_copy_length
+
+		annotation SummarizationSetBy = Automatic
+
+	column has_call_to_action
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 70834ba6-f190-4d9a-b57e-77e5d6d33496
+		sourceLineageTag: has_call_to_action
+		summarizeBy: none
+		sourceColumn: has_call_to_action
+
+		annotation SummarizationSetBy = Automatic
+
+	column creative_emotion
+		dataType: string
+		lineageTag: 431d84fc-2998-45bd-8c16-9d7640788cd5
+		sourceLineageTag: creative_emotion
+		summarizeBy: none
+		sourceColumn: creative_emotion
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim_creative = entity
+		mode: directLake
+		source
+			entityName: dim_creative
+			schemaName: dbo
+			expressionSource: 'DirectLake - lh_marketing_analytics'
+

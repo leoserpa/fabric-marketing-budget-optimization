@@ -1,0 +1,33 @@
+table dim_objective
+	lineageTag: 6c89da01-5c71-45ff-85b4-162c9e2f0175
+	sourceLineageTag: [dbo].[dim_objective]
+
+	column objective_key
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 1e02e0f8-9cf2-4462-86ad-eae1ee0ddd93
+		sourceLineageTag: objective_key
+		summarizeBy: none
+		sourceColumn: objective_key
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column campaign_objective
+		dataType: string
+		lineageTag: d88b7152-35db-463a-bf70-7263b284a60e
+		sourceLineageTag: campaign_objective
+		summarizeBy: none
+		sourceColumn: campaign_objective
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim_objective = entity
+		mode: directLake
+		source
+			entityName: dim_objective
+			schemaName: dbo
+			expressionSource: 'DirectLake - lh_marketing_analytics'
+

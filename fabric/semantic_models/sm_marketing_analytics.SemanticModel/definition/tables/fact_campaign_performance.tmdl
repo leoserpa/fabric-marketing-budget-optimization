@@ -1,0 +1,338 @@
+table fact_campaign_performance
+	lineageTag: a38c1a65-e49b-4b9a-a6ad-c2739a019212
+	sourceLineageTag: [dbo].[fact_campaign_performance]
+
+	column campaign_id
+		dataType: string
+		lineageTag: 80d7beae-c907-4ff4-8d18-42954daf55db
+		sourceLineageTag: campaign_id
+		summarizeBy: none
+		sourceColumn: campaign_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column date_key
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 965bbcb2-6108-4ea6-8669-613d8862b110
+		sourceLineageTag: date_key
+		summarizeBy: none
+		sourceColumn: date_key
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column platform_key
+		dataType: int64
+		formatString: 0
+		lineageTag: 39023268-d83e-4e2f-aed8-61aabd892cf6
+		sourceLineageTag: platform_key
+		summarizeBy: none
+		sourceColumn: platform_key
+
+		annotation SummarizationSetBy = Automatic
+
+	column device_key
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 1e8499d8-31a0-485c-ab0d-f4e91a9723d6
+		sourceLineageTag: device_key
+		summarizeBy: none
+		sourceColumn: device_key
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column objective_key
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 4d97d4f0-8e2a-436f-818c-e2ae3c6da917
+		sourceLineageTag: objective_key
+		summarizeBy: none
+		sourceColumn: objective_key
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column creative_key
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 208cb54f-80f7-408a-8e46-180dda8f9201
+		sourceLineageTag: creative_key
+		summarizeBy: none
+		sourceColumn: creative_key
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column audience_key
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 2d815ba7-f3af-44a1-8463-2fa0941dcaeb
+		sourceLineageTag: audience_key
+		summarizeBy: none
+		sourceColumn: audience_key
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column placement_key
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 87eef9db-06d4-4f47-b55a-9582d37dcee2
+		sourceLineageTag: placement_key
+		summarizeBy: none
+		sourceColumn: placement_key
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column industry_key
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 65630659-7aaa-45a6-aa08-0ccd8016c91e
+		sourceLineageTag: industry_key
+		summarizeBy: none
+		sourceColumn: industry_key
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column budget_tier
+		dataType: string
+		lineageTag: 9db33d99-13c1-4d57-b32a-1ce1d94239aa
+		sourceLineageTag: budget_tier
+		summarizeBy: none
+		sourceColumn: budget_tier
+
+		annotation SummarizationSetBy = Automatic
+
+	column hour_of_day
+		dataType: int64
+		formatString: 0
+		lineageTag: 0cc06d11-5936-4aa8-a1a3-f6c0fe4c95f3
+		sourceLineageTag: hour_of_day
+		summarizeBy: sum
+		sourceColumn: hour_of_day
+
+		annotation SummarizationSetBy = Automatic
+
+	column campaign_day
+		dataType: int64
+		formatString: 0
+		lineageTag: 31119e0f-7959-4817-95b3-f36f299545de
+		sourceLineageTag: campaign_day
+		summarizeBy: sum
+		sourceColumn: campaign_day
+
+		annotation SummarizationSetBy = Automatic
+
+	column creative_age_days
+		dataType: int64
+		formatString: 0
+		lineageTag: 7ff05846-8650-4226-89b8-ea0bceab55d8
+		sourceLineageTag: creative_age_days
+		summarizeBy: sum
+		sourceColumn: creative_age_days
+
+		annotation SummarizationSetBy = Automatic
+
+	column quality_score
+		dataType: int64
+		formatString: 0
+		lineageTag: 83477a91-1264-42ba-9022-d0e669a6e2d4
+		sourceLineageTag: quality_score
+		summarizeBy: sum
+		sourceColumn: quality_score
+
+		annotation SummarizationSetBy = Automatic
+
+	column bounce_rate
+		dataType: double
+		lineageTag: 38f6b729-8b58-4974-8fbb-328ad5f70c23
+		sourceLineageTag: bounce_rate
+		summarizeBy: sum
+		sourceColumn: bounce_rate
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column avg_session_duration_seconds
+		dataType: int64
+		formatString: 0
+		lineageTag: fd0f8092-5167-4da1-829b-ccc3805f31b8
+		sourceLineageTag: avg_session_duration_seconds
+		summarizeBy: sum
+		sourceColumn: avg_session_duration_seconds
+
+		annotation SummarizationSetBy = Automatic
+
+	column pages_per_session
+		dataType: double
+		lineageTag: 0d92bda6-bd45-4ff6-8aef-5509d887d432
+		sourceLineageTag: pages_per_session
+		summarizeBy: sum
+		sourceColumn: pages_per_session
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column impressions
+		dataType: int64
+		formatString: 0
+		lineageTag: 32293d29-01ed-47f4-b7a8-52ceac223ab7
+		sourceLineageTag: impressions
+		summarizeBy: sum
+		sourceColumn: impressions
+
+		annotation SummarizationSetBy = Automatic
+
+	column clicks
+		dataType: int64
+		formatString: 0
+		lineageTag: 8104e5d7-fe2b-4869-ac17-b382ec9376c6
+		sourceLineageTag: clicks
+		summarizeBy: sum
+		sourceColumn: clicks
+
+		annotation SummarizationSetBy = Automatic
+
+	column conversions
+		dataType: int64
+		formatString: 0
+		lineageTag: b9ba7c55-ee58-4543-ba16-6e30d2137bc4
+		sourceLineageTag: conversions
+		summarizeBy: sum
+		sourceColumn: conversions
+
+		annotation SummarizationSetBy = Automatic
+
+	column ad_spend
+		dataType: double
+		lineageTag: 0db197c3-5514-4eb0-93ac-c4f2b34ba075
+		sourceLineageTag: ad_spend
+		summarizeBy: sum
+		sourceColumn: ad_spend
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column revenue
+		dataType: double
+		lineageTag: bde521e3-f5f2-41ab-bc3c-abad60bf9802
+		sourceLineageTag: revenue
+		summarizeBy: sum
+		sourceColumn: revenue
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column CTR
+		dataType: double
+		isHidden
+		lineageTag: abf75a92-78e7-4576-99a5-eb0cb2cdd841
+		sourceLineageTag: CTR
+		summarizeBy: sum
+		sourceColumn: CTR
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column CPC
+		dataType: double
+		isHidden
+		lineageTag: c7b21266-e563-49bc-88ed-56638d687c45
+		sourceLineageTag: CPC
+		summarizeBy: sum
+		sourceColumn: CPC
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column conversion_rate
+		dataType: double
+		isHidden
+		lineageTag: 6efac141-ae66-4c21-905a-d507ecb0b7c3
+		sourceLineageTag: conversion_rate
+		summarizeBy: sum
+		sourceColumn: conversion_rate
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column CPA
+		dataType: double
+		isHidden
+		lineageTag: 7945d3a6-d6b2-449b-9f7a-a73a0dc53b84
+		sourceLineageTag: CPA
+		summarizeBy: sum
+		sourceColumn: CPA
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ROAS
+		dataType: double
+		isHidden
+		lineageTag: 66a27903-fa01-402e-b637-39dbba8c5a75
+		sourceLineageTag: ROAS
+		summarizeBy: sum
+		sourceColumn: ROAS
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column profit
+		dataType: double
+		isHidden
+		lineageTag: 32f8cd0c-711b-405a-ba10-8d0d86bce353
+		sourceLineageTag: profit
+		summarizeBy: sum
+		sourceColumn: profit
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition fact_campaign_performance = entity
+		mode: directLake
+		source
+			entityName: fact_campaign_performance
+			schemaName: dbo
+			expressionSource: 'DirectLake - lh_marketing_analytics'
+

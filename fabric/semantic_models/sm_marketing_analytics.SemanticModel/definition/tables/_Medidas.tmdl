@@ -3,8 +3,9 @@ table _Medidas
 
 	measure 'Investimento Total' =
 			
-			SUM('gold_campaign_performance'[ad_spend])
+			SUM('fact_campaign_performance'[ad_spend])
 		formatString: "R$"\ #,0.00;-"R$"\ #,0.00;"R$"\ #,0.00
+		displayFolder: Financeiro
 		lineageTag: 0fafc520-8e03-46a0-9290-2025636f7730
 
 		changedProperty = Name
@@ -13,8 +14,9 @@ table _Medidas
 
 	measure 'Receita Total' =
 			
-			SUM('gold_campaign_performance'[revenue])
+			SUM('fact_campaign_performance'[revenue])
 		formatString: "R$"\ #,0.00;-"R$"\ #,0.00;"R$"\ #,0.00
+		displayFolder: Financeiro
 		lineageTag: f098cd7a-065b-40b4-abc2-7b5860a1a474
 
 		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
@@ -35,12 +37,14 @@ table _Medidas
 			    0
 			)
 		formatString: #,0.00
+		displayFolder: Performance
 		lineageTag: 3d99920a-7d71-4dd2-801f-3c05366176ae
 
 	measure 'Conversões Totais' =
 			
-			SUM('gold_campaign_performance'[conversions])
+			SUM('fact_campaign_performance'[conversions])
 		formatString: #,0
+		displayFolder: Volume
 		lineageTag: 2024b546-b372-4e52-9a4f-dc715c2b3634
 
 	measure CPA =
@@ -51,20 +55,23 @@ table _Medidas
 			    0
 			)
 		formatString: "R$"\ #,0.00;-"R$"\ #,0.00;"R$"\ #,0.00
+		displayFolder: Performance
 		lineageTag: 4c744275-6078-4dcd-a1d9-36b341dff93e
 
 		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
 
 	measure 'Cliques Totais' =
 			
-			SUM('gold_campaign_performance'[clicks])
+			SUM('fact_campaign_performance'[clicks])
 		formatString: #,0
+		displayFolder: Volume
 		lineageTag: 508a1958-6d0a-45df-89b5-76c4e196f90b
 
 	measure 'Impressões Totais' =
 			
-			SUM('gold_campaign_performance'[impressions])
+			SUM('fact_campaign_performance'[impressions])
 		formatString: #,0
+		displayFolder: Volume
 		lineageTag: 00006dfe-a475-4858-87a7-8c96af5c39dc
 
 	measure CTR =
@@ -75,6 +82,7 @@ table _Medidas
 			    0
 			) * 100
 		formatString: 0.00
+		displayFolder: Performance
 		lineageTag: ba844e56-b183-4f3e-9882-affd54d3927c
 
 	measure 'Taxa de Conversão' =
@@ -85,6 +93,7 @@ table _Medidas
 			    0
 			) * 100
 		formatString: 0.00
+		displayFolder: Performance
 		lineageTag: e23048d4-0c6d-44bb-bf9f-df184dd30c96
 
 	measure CPC =
@@ -95,14 +104,16 @@ table _Medidas
 			    0
 			)
 		formatString: "R$"\ #,0.00;-"R$"\ #,0.00;"R$"\ #,0.00
+		displayFolder: Performance
 		lineageTag: 5aa7c89e-2bc0-4fd8-b955-ebbf6cea747a
 
 		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
 
 	measure 'Total de Campanhas' =
 			
-			DISTINCTCOUNT('gold_campaign_performance'[campaign_id])
+			DISTINCTCOUNT('fact_campaign_performance'[campaign_id])
 		formatString: #,0
+		displayFolder: Volume
 		lineageTag: 482c183b-42af-45e9-af8d-cdbf6d72c0e2
 
 	measure 'Margem de Lucro' =
@@ -113,6 +124,7 @@ table _Medidas
 			    0
 			) * 100
 		formatString: 0.00
+		displayFolder: Financeiro
 		lineageTag: 82bbf16d-6dcc-4865-aae3-73c4b31faf60
 
 	column Value
