@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "Marketing Analytics | Budget Optimization"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "d277b603-078c-8eed-40c9-62b9a614f5b7"
+  }
+}

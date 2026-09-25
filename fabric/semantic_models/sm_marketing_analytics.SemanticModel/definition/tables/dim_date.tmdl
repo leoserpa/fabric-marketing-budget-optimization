@@ -5,7 +5,6 @@ table dim_date
 
 	column date_key
 		dataType: int64
-		isHidden
 		formatString: 0
 		lineageTag: e70ec42b-a852-4327-8c79-2d87329b25fd
 		sourceLineageTag: date_key
@@ -19,11 +18,15 @@ table dim_date
 	column start_date
 		dataType: dateTime
 		isKey
-		formatString: General Date
+		formatString: Short Date
 		lineageTag: ec76da89-3ecd-46fa-af6c-af51d64895a1
 		sourceLineageTag: start_date
 		summarizeBy: none
 		sourceColumn: start_date
+
+		changedProperty = IsHidden
+
+		changedProperty = FormatString
 
 		annotation SummarizationSetBy = Automatic
 
@@ -35,6 +38,8 @@ table dim_date
 		summarizeBy: none
 		sourceColumn: year
 
+		changedProperty = IsHidden
+
 		annotation SummarizationSetBy = Automatic
 
 	column quarter
@@ -45,6 +50,8 @@ table dim_date
 		summarizeBy: none
 		sourceColumn: quarter
 
+		changedProperty = IsHidden
+
 		annotation SummarizationSetBy = Automatic
 
 	column month
@@ -54,6 +61,8 @@ table dim_date
 		sourceLineageTag: month
 		summarizeBy: none
 		sourceColumn: month
+
+		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
@@ -67,6 +76,8 @@ table dim_date
 
 		changedProperty = SortByColumn
 
+		changedProperty = IsHidden
+
 		annotation SummarizationSetBy = Automatic
 
 	column day
@@ -77,6 +88,8 @@ table dim_date
 		summarizeBy: none
 		sourceColumn: day
 
+		changedProperty = IsHidden
+
 		annotation SummarizationSetBy = Automatic
 
 	column day_of_week
@@ -86,6 +99,34 @@ table dim_date
 		summarizeBy: none
 		sourceColumn: day_of_week
 
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column year_month
+		dataType: int64
+		formatString: 0
+		lineageTag: 3cda875f-1c1d-4a4f-b167-74fd3db90384
+		sourceLineageTag: year_month
+		summarizeBy: none
+		sourceColumn: year_month
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column month_year
+		dataType: string
+		lineageTag: d8dc71b4-89c0-405d-ac1a-5b3e9f9370fe
+		sourceLineageTag: month_year
+		summarizeBy: none
+		sourceColumn: month_year
+		sortByColumn: year_month
+
+		changedProperty = IsHidden
+
+		changedProperty = SortByColumn
+
 		annotation SummarizationSetBy = Automatic
 
 	partition dim_date = entity
@@ -94,4 +135,6 @@ table dim_date
 			entityName: dim_date
 			schemaName: dbo
 			expressionSource: 'DirectLake - lh_marketing_analytics'
+
+	changedProperty = IsHidden
 

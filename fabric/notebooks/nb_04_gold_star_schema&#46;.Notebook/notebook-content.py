@@ -142,6 +142,8 @@ dim_date = (
     .withColumn("quarter", F.quarter("start_date"))
     .withColumn("month", F.month("start_date"))
     .withColumn("month_name", F.date_format("start_date", "MMMM"))
+    .withColumn("year_month", F.date_format("start_date", "yyyyMM").cast("int"))
+    .withColumn("month_year", F.date_format("start_date", "MMM/yyyy"))
     .withColumn("day", F.dayofmonth("start_date"))
     .withColumn("day_of_week", F.date_format("start_date", "EEEE"))
     .select(
@@ -151,6 +153,8 @@ dim_date = (
         "quarter",
         "month",
         "month_name",
+        "year_month",
+        "month_year",
         "day",
         "day_of_week"
     )
