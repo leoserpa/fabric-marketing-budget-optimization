@@ -127,6 +127,57 @@ table _Medidas
 		displayFolder: Financeiro
 		lineageTag: 82bbf16d-6dcc-4865-aae3-73c4b31faf60
 
+	measure 'Cor ROAS Plataforma' =
+			
+			VAR ROASAtual = [ROAS]
+			VAR MaiorROAS =
+			    MAXX(
+			        ALLSELECTED('dim_platform'[platform]),
+			        CALCULATE([ROAS])
+			    )
+			RETURN
+			    IF(
+			        ROASAtual = MaiorROAS,
+			        "#1D6FA5",
+			        "#5F6368"
+			    )
+		displayFolder: Formatação
+		lineageTag: baf3aae3-1850-45c7-b383-a21bc0090b7e
+
+	measure 'Cor CPA Plataforma' =
+			
+			VAR CPAAtual = [CPA]
+			VAR MenorCPA =
+			    MINX(
+			        ALLSELECTED('dim_platform'[platform]),
+			        CALCULATE([CPA])
+			    )
+			RETURN
+			    IF(
+			        CPAAtual = MenorCPA,
+			        "#1D6FA5",
+			        "#5F6368"
+			    )
+		displayFolder: Formatação
+		lineageTag: 6fb10c7a-58f1-427c-b7e5-cb9c7c7f53a9
+
+	measure 'Cor Receita Eficiência' =
+			
+			VAR ROASPeriodo = [ROAS]
+			VAR ROASGeral =
+			    CALCULATE(
+			        [ROAS],
+			        ALLSELECTED('dim_date')
+			    )
+			RETURN
+			    IF(
+			        ROASPeriodo >= ROASGeral,
+			        "#1D6FA5",
+			        "#5F6368"
+			    )
+		displayFolder: Formatação
+		lineageTag: 3ea90eb4-1d54-47b4-b222-db78fa7f4fe2
+
 	column Value
 		isHidden
 		formatString: 0

@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="2160" viewBox="0 0 1920 2160">
+  <title>Template Power BI — Rolagem vertical</title>
+  <desc>Template 1920 por 2160 pixels com cinco cartões de KPI e sete painéis vazios para visuais.</desc>
+  <rect width="1920" height="2160" fill="#191c1d"/>
+  <path d="M0 .5H1914Q1919.5 .5 1919.5 6V2160M.5 2160V1" fill="none" stroke="#394041"/>
+  <g fill="#ff5900" transform="translate(-18.5 0) scale(1.5)">
+    <circle cx="68.5" cy="39.5" r="4.4"/>
+    <path d="M59 43Q68 53 78 43L81 47Q69 58 55 48Z"/>
+    <path d="M55 58Q68 49 82 58L78 62Q68 55 59 62Z"/>
+  </g>
+  <g font-family="Segoe UI, Arial, sans-serif">
+    <text x="130.71" y="84" fill="#ededed" font-size="27" font-weight="300">Firestone Pizza Co.</text>
+    <g fill="#8d9394" font-size="13.8">
+      <text x="642.13" y="79.5">Executive Summary</text>
+      <text x="854.38" y="79.5">Regional Sales Performance</text>
+      <text x="1139.4" y="79.5">Product Sales Trend</text>
+      <text x="1353.67" y="79.5">Customer Segments</text>
+    </g>
+    <rect x="1555.82" y="58.5" width="301.19" height="31.5" rx="6" fill="#303637"/>
+    <text x="1706.41" y="79.5" text-anchor="middle" fill="#d8dddd" font-size="13.8">Monthly Performance Review</text>
+    <text x="64" y="157.5" fill="#f0f0f0" font-size="24" font-weight="600">Example Dashboard Title</text>
+    <text x="64" y="189" fill="#b4b8b8" font-size="16.5">Dashboard subtitle to add detail and context</text>
+    <rect x="1569.97" y="142.5" width="287.04" height="37.5" rx="3" fill="#0c100e" stroke="#454c49"/>
+    <circle cx="1600.29" cy="161.25" r="6" fill="#83cf00"/>
+    <text x="1620.5" y="166.5" fill="#cbd0ce" font-size="14.25">Data last updated today</text>
+    <g fill="#0b0f0d" stroke="#484e4b" stroke-width="1.2">
+      <rect x="64" y="218.25" width="332.53" height="180" rx="7.5"/>
+      <rect x="428.87" y="218.25" width="332.53" height="180" rx="7.5"/>
+      <rect x="793.74" y="218.25" width="332.53" height="180" rx="7.5"/>
+      <rect x="1158.61" y="218.25" width="332.53" height="180" rx="7.5"/>
+      <rect x="64" y="424" width="880" height="611.25" rx="7.5"/>
+      <rect x="976" y="424" width="880" height="611.25" rx="7.5"/>
+      <rect x="1523.47" y="218.25" width="332.53" height="180" rx="7.5"/>
+    </g>
+    <g fill="none" stroke="#e3e6e4" stroke-width="1.35">
+      <g id="icone-investimento-total" transform="translate(89.29 242)" stroke-linecap="round" stroke-linejoin="round">
+        <path xmlns="http://www.w3.org/2000/svg" d="M3 7V5a2 2 0 0 1 2-2h17v4M24 16v7H5a2 2 0 0 1-2-2V7h21v5"/>
+        <path xmlns="http://www.w3.org/2000/svg" d="M19 12h7v6h-7a3 3 0 0 1 0-6Z"/>
+        <circle xmlns="http://www.w3.org/2000/svg" cx="20.5" cy="15" r=".8" fill="#e3e6e4" stroke="none"/>
+      </g>
+      <g id="icone-receita-total" transform="translate(454.16 242)" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M3 24V4M3 24h24"/>
+        <path d="M7 19l5-6 4 3 8-10"/>
+        <path d="M19 6h5v5"/>
+      </g>
+      <g id="icone-lucro-total" transform="translate(821.03 242)" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="13" r="10"/>
+        <path d="M15 8.8c-1-1-6-1.4-6 1.5 0 2.6 6 1.3 6 4.1 0 3.1-5.3 2.8-6.5 1.4M12 6.5v12.3"/>
+      </g>
+      <g id="icone-roas" transform="translate(1183.9 242)" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M4 12h5l10-6v20L9 20H4Z"/>
+        <path d="M9 20l2 5h4l-2-6M22 11c2 1.2 3 3 3 5s-1 3.8-3 5"/>
+        <path d="M20 7V3m0 0-3 3m3-3 3 3"/>
+      </g>
+      <g id="icone-cpa" transform="translate(1550.76 242)" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M3 4h12l8 8-12 12L3 16Z"/>
+        <circle cx="10" cy="10" r="1.4"/>
+        <path d="M16.5 14.8c-.8-.7-3.5-.9-3.5.8 0 1.6 3.5.8 3.5 2.5 0 1.8-3.1 1.6-3.8.7M15 13.5v7"/>
+      </g>
+    </g>
+    <g fill="#e3e6e4" font-size="16.5" text-anchor="middle">
+    </g>
+    <g fill="#cdd1cf" font-size="14.25">
+      <text x="86.24" y="296" font-size="18">Investimento Total</text>
+      <text x="451.1" y="296" font-size="18">Receita Total</text>
+      <text x="815.97" y="296" font-size="18">Lucro Total</text>
+      <text x="1180.84" y="296" font-size="18">ROAS</text>
+      <text x="1545.71" y="296" font-size="18">CPA</text>
+    </g>
+    <g fill="#f0f1f0" font-size="16.5" font-weight="500">
+      <text x="88" y="471" font-size="27" font-weight="600">Quais plataformas geram maior retorno?</text>
+      <text x="1000" y="471" font-size="27" font-weight="600">Quais plataformas têm menor custo de aquisição?</text>
+    </g>
+    <g fill="#b8bfbb" font-size="14.25">
+      <text x="88" y="504" font-size="18">ROAS por plataforma de mídia</text>
+      <text x="1000" y="504" font-size="18">CPA por plataforma de mídia</text>
+    </g>
+  </g>
+  <g font-family="Segoe UI, Arial, sans-serif">
+    <g xmlns="http://www.w3.org/2000/svg" fill="#0b0f0d" stroke="#484e4b" stroke-width="1.2">
+      <rect x="64" y="1060" width="880" height="320" rx="7.5"/>
+      <rect x="976" y="1060" width="880" height="320" rx="7.5"/>
+      <rect x="64" y="1404" width="880" height="300" rx="7.5"/>
+      <rect x="976" y="1404" width="880" height="300" rx="7.5"/>
+      <rect x="64" y="1728" width="1792" height="368" rx="7.5"/>
+    </g>
+    <g xmlns="http://www.w3.org/2000/svg" fill="#f0f1f0" font-size="16.5" font-weight="500">
+    </g>
+  </g>
+</svg>
