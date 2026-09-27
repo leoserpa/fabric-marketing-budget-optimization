@@ -34,7 +34,7 @@ table _Medidas
 			DIVIDE(
 			    [Receita Total],
 			    [Investimento Total],
-			    0
+			    BLANK()
 			)
 		formatString: #,0.00
 		displayFolder: Performance
@@ -52,7 +52,7 @@ table _Medidas
 			DIVIDE(
 			    [Investimento Total],
 			    [Conversões Totais],
-			    0
+			    BLANK()
 			)
 		formatString: "R$"\ #,0.00;-"R$"\ #,0.00;"R$"\ #,0.00
 		displayFolder: Performance
@@ -177,6 +177,374 @@ table _Medidas
 			    )
 		displayFolder: Formatação
 		lineageTag: 3ea90eb4-1d54-47b4-b222-db78fa7f4fe2
+
+	measure 'Cor ROAS Objetivo' =
+			
+			VAR ROASAtual = [ROAS]
+			VAR MaiorROAS =
+			    MAXX(
+			        ALLSELECTED('dim_objective'[campaign_objective]),
+			        CALCULATE([ROAS])
+			    )
+			RETURN
+			    IF(
+			        ROASAtual = MaiorROAS,
+			        "#1D6FA5",
+			        "#5F6368"
+			    )
+		displayFolder: Formatação
+		lineageTag: 0e7425ab-71bf-4a0b-9e30-434742cbf592
+
+	measure 'Cor Investimento Plataforma' =
+			
+			VAR RankingAtual =
+			    RANKX(
+			        ALLSELECTED('dim_platform'[platform]),
+			        CALCULATE([Investimento Total]),
+			        ,
+			        DESC,
+			        DENSE
+			    )
+			RETURN
+			    SWITCH(
+			        RankingAtual,
+			        1, "#1D6FA5",   -- Azul
+			        2, "#40454B",   -- Cinza bem escuro
+			        3, "#5C6268",
+			        4, "#787E84",
+			        5, "#969BA0",
+			        6, "#B8BCC0",   -- Cinza claro
+			        "#B8BCC0"
+			    )
+		displayFolder: Formatação
+		lineageTag: 05e4f350-b299-47dc-88d3-83d502943309
+
+	measure 'Cor ROAS Dispositivo' =
+			
+			VAR ROASAtual = [ROAS]
+			VAR MaiorROAS =
+			    MAXX(
+			        ALLSELECTED('dim_device'[device_type]),
+			        CALCULATE([ROAS])
+			    )
+			RETURN
+			    IF(
+			        ROASAtual = MaiorROAS,
+			        "#1D6FA5",
+			        "#5F6368"
+			    )
+		displayFolder: Formatação
+		lineageTag: eeec323f-1291-436a-8bda-0b79f0022bff
+
+	measure 'Cor ROAS Posicionamento' =
+			
+			VAR ROASAtual = [ROAS]
+			VAR MaiorROAS =
+			    MAXX(
+			        ALLSELECTED('dim_placement'[ad_placement]),
+			        CALCULATE([ROAS])
+			    )
+			RETURN
+			    IF(
+			        ROASAtual = MaiorROAS,
+			        "#1D6FA5",
+			        "#5F6368"
+			    )
+		displayFolder: Formatação
+		lineageTag: 0e551576-441a-4e98-b263-c88173d681e7
+
+	measure 'Cor Conversão Criativo' =
+			
+			VAR ConversaoAtual = [Taxa de Conversão]
+			VAR MaiorConversao =
+			    MAXX(
+			        ALLSELECTED('dim_creative'[creative_format]),
+			        CALCULATE([Taxa de Conversão])
+			    )
+			RETURN
+			    IF(
+			        ConversaoAtual = MaiorConversao,
+			        "#1D6FA5",
+			        "#5F6368"
+			    )
+		displayFolder: Formatação
+		lineageTag: 06063067-1cfa-4e7e-bccc-3764256624a8
+
+	measure 'Cor ROAS Indústria' =
+			
+			VAR RankingAtual =
+			    RANKX(
+			        ALLSELECTED('dim_industry'[industry_vertical]),
+			        CALCULATE([ROAS]),
+			        ,
+			        DESC,
+			        DENSE
+			    )
+			
+			RETURN
+			    SWITCH(
+			        RankingAtual,
+			        1, "#1D6FA5",   -- Maior ROAS
+			        2, "#4A4F54",
+			        3, "#5D6267",
+			        4, "#70757A",
+			        5, "#858A8F",
+			        6, "#9A9EA2",
+			        "#9A9EA2"
+			    )
+		displayFolder: Formatação
+		lineageTag: dba138fa-05ec-4472-9c98-7a5620884dbd
+
+	measure 'Cor ROAS Tabela' =
+			
+			VAR ROASAtual = [ROAS]
+			
+			VAR CampanhasSelecionadas =
+			    CALCULATETABLE(
+			        VALUES('fact_campaign_performance'[campaign_id]),
+			        ALLSELECTED('fact_campaign_performance')
+			    )
+			
+			VAR TabelaROAS =
+			    CALCULATETABLE(
+			        ADDCOLUMNS(
+			            CampanhasSelecionadas,
+			            "@ROAS",
+			                VAR CampanhaAtual =
+			                    'fact_campaign_performance'[campaign_id]
+			                RETURN
+			                    CALCULATE(
+			                        [ROAS],
+			                        REMOVEFILTERS('fact_campaign_performance'),
+			                        'fact_campaign_performance'[campaign_id] = CampanhaAtual
+			                    )
+			        ),
+			        REMOVEFILTERS('dim_platform')
+			    )
+			
+			VAR TabelaValida =
+			    FILTER(
+			        TabelaROAS,
+			        NOT ISBLANK([@ROAS])
+			    )
+			
+			VAR LimiteTop10 =
+			    PERCENTILEX.INC(
+			        TabelaValida,
+			        [@ROAS],
+			        0.90
+			    )
+			
+			RETURN
+			    IF(
+			        NOT ISBLANK(ROASAtual)
+			            && ROASAtual >= LimiteTop10,
+			        "#1D6FA5",
+			        "#FFFFFF"
+			    )
+		displayFolder: Formatação
+		lineageTag: 3277b067-46fc-4a7b-954e-32e535c7e6df
+
+	measure 'Cor CPA Tabela' =
+			
+			VAR CPAAtual = [CPA]
+			
+			VAR CampanhasValidas =
+			    FILTER(
+			        ALLSELECTED('fact_campaign_performance'[campaign_id]),
+			        CALCULATE([CPA]) > 0
+			            && NOT ISBLANK(CALCULATE([CPA]))
+			    )
+			
+			VAR RankingCPA =
+			    RANKX(
+			        CampanhasValidas,
+			        CALCULATE([CPA]),
+			        ,
+			        ASC,
+			        DENSE
+			    )
+			
+			VAR TotalCampanhasValidas =
+			    COUNTROWS(CampanhasValidas)
+			
+			VAR LimiteTop10 =
+			    MAX(
+			        1,
+			        ROUNDUP(TotalCampanhasValidas * 0.10, 0)
+			    )
+			
+			RETURN
+			    IF(
+			        NOT ISBLANK(CPAAtual)
+			            && CPAAtual > 0
+			            && RankingCPA <= LimiteTop10,
+			        "#1D6FA5",
+			        "#FFFFFF"
+			    )
+		displayFolder: Formatação
+		lineageTag: 028a56c7-33f2-4f2d-a31c-f3a680aac610
+
+	measure 'Cor Investimento por ROAS' =
+			
+			VAR ROASAtual = [ROAS]
+			
+			VAR MaiorROAS =
+			    MAXX(
+			        ALLSELECTED('dim_platform'[platform]),
+			        CALCULATE([ROAS])
+			    )
+			
+			RETURN
+			    IF(
+			        NOT ISBLANK(ROASAtual) &&
+			        ROASAtual = MaiorROAS,
+			        "#1D6FA5",
+			        "#5F6368"
+			    )
+		displayFolder: Formatação
+		lineageTag: c8751991-4a99-4de2-85e1-d36046d76461
+
+	measure 'Cor Status Orçamento' =
+			
+			VAR StatusAtual =
+			    SELECTEDVALUE(
+			        'fact_campaign_performance'[Status Orçamento]
+			    )
+			
+			RETURN
+			    SWITCH(
+			        StatusAtual,
+			        "Escalar", "#1D6FA5",
+			        "Manter", "#70757A",
+			        "Reavaliar", "#9AA0A6",
+			        "#70757A"
+			    )
+		displayFolder: Formatação
+		lineageTag: 8cd40b36-c158-40fc-ad5b-590500800e52
+
+	measure 'Campanhas Totais' =
+			
+			DISTINCTCOUNT(
+			    'fact_campaign_performance'[campaign_id]
+			)
+		formatString: 0
+		displayFolder: Volume
+		lineageTag: 51c44646-0cef-4f27-8d31-4dc82893f6d4
+
+	measure 'Cor Investimento Reavaliar' =
+			
+			VAR InvestimentoAtual =
+			    [Investimento Total]
+			
+			VAR MaiorInvestimento =
+			    MAXX(
+			        ALLSELECTED('dim_platform'[platform]),
+			        CALCULATE([Investimento Total])
+			    )
+			
+			RETURN
+			    IF(
+			        InvestimentoAtual = MaiorInvestimento,
+			        "#1D6FA5",
+			        "#70757A"
+			    )
+		displayFolder: Formatação
+		lineageTag: 91a37138-fd37-4e9e-b668-3741b6ff9398
+
+	measure '% Investimento' =
+			
+			DIVIDE(
+			    [Investimento Total],
+			    CALCULATE(
+			        [Investimento Total],
+			        REMOVEFILTERS('dim_objective')
+			    )
+			)
+		displayFolder: Financeiro
+		lineageTag: 790cbfd8-90eb-452f-9915-d5de94f89eab
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '% Receita' =
+			
+			DIVIDE(
+			    [Receita Total],
+			    CALCULATE(
+			        [Receita Total],
+			        REMOVEFILTERS('dim_objective')
+			    )
+			)
+		displayFolder: Financeiro
+		lineageTag: e2676cb2-1ad7-4d36-996e-ef58a3d0a693
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Gap Alocação' =
+			
+			[% Receita] - [% Investimento]
+		displayFolder: Financeiro
+		lineageTag: 0805b672-6ec1-4a1a-b52c-a09e01b6ea60
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Cor Gap Alocação' =
+			
+			VAR Gap = [Gap Alocação]
+			
+			RETURN
+			    SWITCH(
+			        TRUE(),
+			        ISBLANK(Gap), "#70757A",
+			        Gap > 0.01, "#1D6FA5",
+			        Gap < -0.01, "#70757A",
+			        "#9AA0A6"
+			    )
+		displayFolder: Formatação
+		lineageTag: 1178d38c-83cb-41da-9d65-11be0a8d253e
+
+	measure '% Investimento por Campanha' =
+			
+			VAR InvestimentoCampanha =
+			    [Investimento Total]
+			
+			VAR InvestimentoContexto =
+			    CALCULATE(
+			        [Investimento Total],
+			        REMOVEFILTERS('fact_campaign_performance'[campaign_id]),
+			        REMOVEFILTERS('fact_campaign_performance'[Status Orçamento]),
+			        ALLSELECTED('dim_platform'[platform])
+			    )
+			
+			RETURN
+			    DIVIDE(
+			        InvestimentoCampanha,
+			        InvestimentoContexto,
+			        BLANK()
+			    )
+		displayFolder: Financeiro
+		lineageTag: 03f1c051-e954-4378-b8c8-e64b88854fb1
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure Measure
+		lineageTag: a60cafc5-d2ee-48ad-9672-3d4df27c867f
+
+		annotation 43dbc3e8-3a1c-4b6f-9923-b49ff7d6691c = True
+
+	measure 'Cor Status Orçamento Tabela' =
+			
+			SWITCH(
+			    SELECTEDVALUE(
+			        'fact_campaign_performance'[Status Orçamento]
+			    ),
+			    "Escalar", "#2196F3",
+			    "Manter", "#FFFFFF",
+			    "Reavaliar", "#9AA0A6",
+			    "#FFFFFF"
+			)
+		displayFolder: Formatação
+		lineageTag: 6c32a318-8497-4e63-915a-9b621a6b06d0
 
 	column Value
 		isHidden

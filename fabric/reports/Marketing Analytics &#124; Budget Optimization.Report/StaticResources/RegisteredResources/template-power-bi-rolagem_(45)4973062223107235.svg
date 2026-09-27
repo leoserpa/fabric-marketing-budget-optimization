@@ -1,29 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" width="1920" height="2160" viewBox="0 0 1920 2160">
   <title>Template Power BI — Rolagem vertical</title>
-  <desc>Template 1920 por 2160 pixels com cinco cartões de KPI e sete painéis vazios para visuais.</desc>
+  <desc>Template 1920 por 2160 pixels com cinco cartões de KPI e cinco painéis vazios para visuais.</desc>
   <rect width="1920" height="2160" fill="#191c1d"/>
   <path d="M0 .5H1914Q1919.5 .5 1919.5 6V2160M.5 2160V1" fill="none" stroke="#394041"/>
-  <g fill="#ff5900" transform="translate(-18.5 0) scale(1.5)">
-    <circle cx="68.5" cy="39.5" r="4.4"/>
-    <path d="M59 43Q68 53 78 43L81 47Q69 58 55 48Z"/>
-    <path d="M55 58Q68 49 82 58L78 62Q68 55 59 62Z"/>
+  <g id="logo-lumina-commerce" transform="translate(64 53)">
+    <rect width="38" height="38" rx="9" fill="#1D6FA5"/>
+    <path d="M12 10v18h15" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M25 8v8M21 12h8" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
   </g>
   <g font-family="Segoe UI, Arial, sans-serif">
-    <text x="130.71" y="84" fill="#ededed" font-size="27" font-weight="300">Firestone Pizza Co.</text>
-    <g fill="#8d9394" font-size="13.8">
-      <text x="642.13" y="79.5">Executive Summary</text>
-      <text x="854.38" y="79.5">Regional Sales Performance</text>
-      <text x="1139.4" y="79.5">Product Sales Trend</text>
-      <text x="1353.67" y="79.5">Customer Segments</text>
+    <rect x="1700" y="22" width="156" height="34" rx="5" fill="#5F6368"/>
+    <g fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M1722 31a8 8 0 1 0 3 12"/>
+      <path d="M1722 31v5h5"/>
     </g>
-    <rect x="1555.82" y="58.5" width="301.19" height="31.5" rx="6" fill="#303637"/>
-    <text x="1706.41" y="79.5" text-anchor="middle" fill="#d8dddd" font-size="13.8">Monthly Performance Review</text>
-    <text x="64" y="157.5" fill="#f0f0f0" font-size="24" font-weight="600">Example Dashboard Title</text>
-    <text x="64" y="189" fill="#b4b8b8" font-size="16.5">Dashboard subtitle to add detail and context</text>
-    <rect x="1569.97" y="142.5" width="287.04" height="37.5" rx="3" fill="#0c100e" stroke="#454c49"/>
-    <circle cx="1600.29" cy="161.25" r="6" fill="#83cf00"/>
-    <text x="1620.5" y="166.5" fill="#cbd0ce" font-size="14.25">Data last updated today</text>
+    <text x="130.71" y="84" fill="#ededed" font-size="27" font-weight="300">Lumina Commerce</text>
+    <text x="64" y="157.5" fill="#f0f0f0" font-size="20" font-weight="600">Performance de Marketing &amp; Otimização de Orçamento</text>
+    <text x="64" y="189" fill="#b4b8b8" font-size="16.5">Análise de campanhas e eficiência dos investimentos em mídia</text>
+    <text x="1362" y="125" fill="#cdd1cf" font-size="16" font-weight="600">Plataforma</text>
+    <text x="1158" y="125" fill="#cdd1cf" font-size="14" font-weight="600">Objetivo da campanha</text>
+    <text x="1569.97" y="125" fill="#cdd1cf" font-size="16" font-weight="600">Período</text>
     <g fill="#0b0f0d" stroke="#484e4b" stroke-width="1.2">
       <rect x="64" y="218.25" width="332.53" height="180" rx="7.5"/>
       <rect x="428.87" y="218.25" width="332.53" height="180" rx="7.5"/>
@@ -79,13 +76,18 @@
   </g>
   <g font-family="Segoe UI, Arial, sans-serif">
     <g xmlns="http://www.w3.org/2000/svg" fill="#0b0f0d" stroke="#484e4b" stroke-width="1.2">
-      <rect x="64" y="1060" width="880" height="320" rx="7.5"/>
-      <rect x="976" y="1060" width="880" height="320" rx="7.5"/>
-      <rect x="64" y="1404" width="880" height="300" rx="7.5"/>
-      <rect x="976" y="1404" width="880" height="300" rx="7.5"/>
-      <rect x="64" y="1728" width="1792" height="368" rx="7.5"/>
+      <rect x="64" y="1060" width="880" height="504" rx="7.5"/>
+      <rect x="976" y="1060" width="880" height="504" rx="7.5"/>
+      <rect x="64" y="1588" width="1792" height="508" rx="7.5"/>
     </g>
+    <text x="88" y="1107" fill="#f0f1f0" font-size="27" font-weight="600">Quais objetivos de campanha geram maior retorno?</text>
+    <text x="88" y="1140" fill="#b8bfbb" font-size="18">ROAS por objetivo da campanha</text>
+    <text x="1000" y="1107" fill="#f0f1f0" font-size="27" font-weight="600">Como o orçamento está distribuído entre as plataformas?</text>
+    <text x="1000" y="1140" fill="#b8bfbb" font-size="18">Participação no investimento total por plataforma</text>
+    <text x="88" y="1635" fill="#f0f1f0" font-size="27" font-weight="600">Como a receita e a eficiência evoluíram ao longo do tempo?</text>
+    <text x="88" y="1668" fill="#b8bfbb" font-size="18">Receita e ROAS por mês · Azul indica ROAS acima da média do período</text>
     <g xmlns="http://www.w3.org/2000/svg" fill="#f0f1f0" font-size="16.5" font-weight="500">
     </g>
   </g>
+  <text x="1856" y="2130" text-anchor="end" fill="#8D9394" font-family="Segoe UI, Arial, sans-serif" font-size="14">Desenvolvido por Leonardo Serpa</text>
 </svg>

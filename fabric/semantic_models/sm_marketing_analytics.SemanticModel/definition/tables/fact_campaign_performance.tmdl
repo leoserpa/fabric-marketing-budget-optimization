@@ -329,6 +329,70 @@ table fact_campaign_performance
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
+	column 'Status Orçamento' =
+			
+			VAR InvestimentoCampanha =
+			    'fact_campaign_performance'[ad_spend]
+			
+			VAR ConversoesCampanha =
+			    'fact_campaign_performance'[conversions]
+			
+			VAR ROASCampanha =
+			    DIVIDE(
+			        'fact_campaign_performance'[revenue],
+			        InvestimentoCampanha
+			    )
+			
+			VAR CPACampanha =
+			    DIVIDE(
+			        InvestimentoCampanha,
+			        ConversoesCampanha
+			    )
+			
+			VAR MedianaROAS =
+			    MEDIANX(
+			        FILTER(
+			            ALL('fact_campaign_performance'),
+			            'fact_campaign_performance'[ad_spend] > 0
+			        ),
+			        DIVIDE(
+			            'fact_campaign_performance'[revenue],
+			            'fact_campaign_performance'[ad_spend]
+			        )
+			    )
+			
+			VAR MedianaCPA =
+			    MEDIANX(
+			        FILTER(
+			            ALL('fact_campaign_performance'),
+			            'fact_campaign_performance'[ad_spend] > 0 &&
+			            'fact_campaign_performance'[conversions] > 0
+			        ),
+			        DIVIDE(
+			            'fact_campaign_performance'[ad_spend],
+			            'fact_campaign_performance'[conversions]
+			        )
+			    )
+			
+			RETURN
+			    SWITCH(
+			        TRUE(),
+			        InvestimentoCampanha <= 0, BLANK(),
+			        ConversoesCampanha <= 0, "Reavaliar",
+			        ROASCampanha >= MedianaROAS &&
+			            CPACampanha <= MedianaCPA, "Escalar",
+			        ROASCampanha < MedianaROAS &&
+			            CPACampanha > MedianaCPA, "Reavaliar",
+			        "Manter"
+			    )
+		lineageTag: e3766180-5743-4a91-8554-4b0380a166da
+		summarizeBy: none
+		expressionContext: userContext
+
+		changedProperty = Name
+
+		annotation SummarizationSetBy = Automatic
+
 	partition fact_campaign_performance = entity
 		mode: directLake
 		source
