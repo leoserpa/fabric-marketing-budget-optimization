@@ -93,6 +93,31 @@
             ]
           }
         ]
+      },
+      {
+        "type": "TridentNotebook",
+        "typeProperties": {
+          "notebookId": "fbb5dd1e-b04b-9849-41d0-98460cbc4a48",
+          "workspaceId": "00000000-0000-0000-0000-000000000000",
+          "sessionTag": "marketing_pipeline"
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "Run_Data_Quality",
+        "description": "Executa o Quality Gate e as validações de integridade referencial, completude, regras de negócio e métricas do Star Schema na camada Gold, persistindo o log de auditoria no Lakehouse.",
+        "dependsOn": [
+          {
+            "activity": "Run_Gold_Star_Schema",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
       }
     ]
   }
