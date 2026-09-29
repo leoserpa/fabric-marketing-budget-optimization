@@ -1,5 +1,5 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.13.0/schema.json",
   "name": "115c10a701a069806105",
   "position": {
     "x": 72.5,
@@ -341,7 +341,7 @@
             "markerSize": {
               "expr": {
                 "Literal": {
-                  "Value": "7D"
+                  "Value": "5D"
                 }
               }
             },
