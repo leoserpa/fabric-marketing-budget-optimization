@@ -12,6 +12,18 @@
 
 ---
 
+## Project Demonstration
+
+> Walkthrough recording demonstrating the end-to-end data pipeline in Microsoft Fabric and analytical exploration in Power BI:
+
+
+
+https://github.com/user-attachments/assets/d8f38dad-d732-43df-a3be-c3c5e3a85d9b
+
+
+
+---
+
 ## Overview
 
 This end-to-end analytics project evaluates **10,000 digital advertising campaigns** across multiple platforms to identify high-impact opportunities for ad spend optimization. The data lifecycle covers raw CSV ingestion into a Microsoft Fabric Lakehouse, data profiling, transformation through Bronze, Silver, and Gold layers, dimensional modeling, automated Data Quality validation, and business intelligence consumption via DirectLake.
