@@ -1,5 +1,5 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.13.0/schema.json",
   "name": "624eeac89b9cb07c344d",
   "position": {
     "x": 72.5,
@@ -27,7 +27,8 @@
                 }
               },
               "queryRef": "_Medidas.Taxa de Conversão",
-              "nativeQueryRef": "Taxa de Conversão"
+              "nativeQueryRef": "Taxa de Conversão",
+              "format": "0.00\\%"
             }
           ]
         }
