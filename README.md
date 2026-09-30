@@ -12,6 +12,17 @@
 
 ---
 
+## Demonstração do Projeto
+
+> Demonstração prática do ambiente Microsoft Fabric e da navegação no relatório analítico do Power BI:
+
+
+https://github.com/user-attachments/assets/4c8163b7-f431-4b8e-b378-c35c3f941402
+
+
+
+---
+
 ## Visão Geral
 
 Este projeto analisa **10.000 campanhas de marketing digital** em múltiplas plataformas para identificar oportunidades de otimização do investimento publicitário. O fluxo de dados percorre desde a ingestão bruta até a visualização em relatórios interativos, passando por etapas de qualidade, transformação e modelagem dimensional.
