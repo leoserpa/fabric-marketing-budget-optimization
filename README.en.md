@@ -10,6 +10,10 @@
 ![Power BI](https://img.shields.io/badge/Power_BI-F2C811?style=for-the-badge&logo=powerbi&logoColor=black)
 ![DAX](https://img.shields.io/badge/DAX-217346?style=for-the-badge&logo=microsoft-excel&logoColor=white)
 
+<br>
+
+![Project Cover - Power BI Suite](docs/images/cover.en.png)
+
 ---
 
 ## Project Demonstration
@@ -114,7 +118,11 @@ fabric-marketing-budget-optimization-main/
     ├── data-dictionary.md (.en.md)                   # Comprehensive data catalog & schemas
     ├── notebooks-guide.md (.en.md)                   # Notebook execution & extension guide
     ├── semantic-model-guide.md (.en.md)              # Semantic model & DAX reference
-    └── images/                                       # High-resolution screenshots & diagrams
+    └── images/                                       # Visual evidence and screenshots
+        ├── cover.png (.en.png)                       # Project cover banner & 3-screen mockup (PT / EN)
+        ├── pipeline-fabric.jpg                       # Fabric Data Pipeline screenshot
+        ├── modelo-semantico.jpg                      # Star Schema semantic model diagram
+        └── relatorio-*.jpg                           # Power BI 3-page report screenshots
 ```
 
 ---
