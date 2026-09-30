@@ -96,6 +96,7 @@ fabric-marketing-budget-optimization-main/
 │       └── Marketing_Analytics_Budget_Optimization.Report/  # Power BI analytical report
 │
 └── docs/                                             # Extended technical documentation
+    ├── README.md (.en.md)                            # Documentation hub & reading index
     ├── architecture.md (.en.md)                      # Architecture decisions & design patterns
     ├── data-dictionary.md (.en.md)                   # Comprehensive data catalog & schemas
     ├── notebooks-guide.md (.en.md)                   # Notebook execution & extension guide

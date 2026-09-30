@@ -96,6 +96,7 @@ fabric-marketing-budget-optimization-main/
 │       └── Marketing_Analytics_Budget_Optimization.Report/  # Relatório Power BI
 │
 └── docs/                                             # Documentação do projeto
+    ├── README.md (.en.md)                            # Central e índice da documentação (PT / EN)
     ├── architecture.md (.en.md)                      # Guia de arquitetura (PT / EN)
     ├── data-dictionary.md (.en.md)                   # Dicionário de dados (PT / EN)
     ├── notebooks-guide.md (.en.md)                   # Guia dos notebooks (PT / EN)
