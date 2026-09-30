@@ -96,10 +96,10 @@ fabric-marketing-budget-optimization-main/
 │       └── Marketing_Analytics_Budget_Optimization.Report/  # Power BI analytical report
 │
 └── docs/                                             # Extended technical documentation
-    ├── architecture.md                               # Architecture decisions & design patterns
-    ├── data-dictionary.md                            # Comprehensive data catalog & schemas
-    ├── notebooks-guide.md                            # Notebook execution & extension guide
-    ├── semantic-model-guide.md                       # Semantic model & DAX reference
+    ├── architecture.md (.en.md)                      # Architecture decisions & design patterns
+    ├── data-dictionary.md (.en.md)                   # Comprehensive data catalog & schemas
+    ├── notebooks-guide.md (.en.md)                   # Notebook execution & extension guide
+    ├── semantic-model-guide.md (.en.md)              # Semantic model & DAX reference
     └── images/                                       # High-resolution screenshots & diagrams
 ```
 
@@ -345,10 +345,10 @@ nb_05_data_quality        → Automated tests, referential integrity & Quality G
 
 | Document | Description |
 |:---|:---|
-| [Architecture Guide](docs/architecture.md) | Technical decisions, trade-offs, and design patterns |
-| [Data Dictionary](docs/data-dictionary.md) | Full schemas, column definitions, and data types |
-| [Notebooks Guide](docs/notebooks-guide.md) | Detailed walkthrough for running and extending notebooks |
-| [Semantic Model Guide](docs/semantic-model-guide.md) | DAX measures, TMDL definitions, and modeling rules |
+| [Architecture Guide](docs/architecture.en.md) | Technical decisions, trade-offs, and design patterns |
+| [Data Dictionary](docs/data-dictionary.en.md) | Full schemas, column definitions, and data types |
+| [Notebooks Guide](docs/notebooks-guide.en.md) | Detailed walkthrough for running and extending notebooks |
+| [Semantic Model Guide](docs/semantic-model-guide.en.md) | DAX measures, TMDL definitions, and modeling rules |
 
 ---
 

@@ -96,10 +96,10 @@ fabric-marketing-budget-optimization-main/
 │       └── Marketing_Analytics_Budget_Optimization.Report/  # Relatório Power BI
 │
 └── docs/                                             # Documentação do projeto
-    ├── architecture.md                               # Guia de arquitetura
-    ├── data-dictionary.md                            # Dicionário de dados
-    ├── notebooks-guide.md                            # Guia dos notebooks
-    ├── semantic-model-guide.md                       # Guia do modelo semântico
+    ├── architecture.md (.en.md)                      # Guia de arquitetura (PT / EN)
+    ├── data-dictionary.md (.en.md)                   # Dicionário de dados (PT / EN)
+    ├── notebooks-guide.md (.en.md)                   # Guia dos notebooks (PT / EN)
+    ├── semantic-model-guide.md (.en.md)              # Guia do modelo semântico (PT / EN)
     └── images/                                       # Evidências visuais e capturas de tela
 ```
 
@@ -355,4 +355,3 @@ nb_05_data_quality        → Framework de testes e Quality Gate
 ## Licença
 
 Este projeto está licenciado sob a [MIT License](LICENSE).
-
