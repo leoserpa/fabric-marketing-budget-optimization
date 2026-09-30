@@ -76,6 +76,7 @@ fabric-marketing-budget-optimization-main/
 │   └── tech_advertising_campaigns_dataset.csv       # Dataset original (10.000 registros)
 │
 ├── fabric/                                           # Artefatos do Microsoft Fabric
+│   ├── README.md (.en.md)                            # Guia técnico dos itens do Fabric (PT / EN)
 │   ├── lakehouse/
 │   │   └── lh_marketing_analytics.Lakehouse/         # Lakehouse centralizado
 │   │
