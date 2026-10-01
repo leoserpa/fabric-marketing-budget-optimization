@@ -21,7 +21,9 @@
 > Demonstração prática do ambiente Microsoft Fabric e da navegação no relatório analítico do Power BI:
 
 
-https://github.com/user-attachments/assets/4c8163b7-f431-4b8e-b378-c35c3f941402
+
+https://github.com/user-attachments/assets/737c104a-a3bb-4f53-9c70-a04a797a7d99
+
 
 
 
