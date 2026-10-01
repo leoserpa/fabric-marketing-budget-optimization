@@ -111,6 +111,13 @@ fabric-marketing-budget-optimization-main/
 │   └── reports/
 │       └── Marketing_Analytics_Budget_Optimization.Report/  # Relatório Power BI
 │
+├── assets/                                           # Recursos visuais e templates do projeto
+│   └── templates/                                    # Templates vetoriais de layout (Power BI)
+│       ├── README.md (.en.md)                        # Instruções de aplicação no Power BI (PT / EN)
+│       ├── template-pagina-1-executivo.svg           # Fundo vetorial da Página 1 (Executivo)
+│       ├── template-pagina-2-campanhas.svg           # Fundo vetorial da Página 2 (Campanhas)
+│       └── template-pagina-3-orcamento.svg           # Fundo vetorial da Página 3 (Orçamento)
+│
 └── docs/                                             # Documentação do projeto
     ├── README.md (.en.md)                            # Central e índice da documentação (PT / EN)
     ├── architecture.md (.en.md)                      # Guia de arquitetura (PT / EN)
